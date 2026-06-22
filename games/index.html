@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biano Games - Portal de Jogos Moderno</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Seletor de Tema -->
+    <div class="theme-selector" id="themeSelector">
+        <button class="theme-btn" data-theme="blue" title="Tema Azul">
+            <span class="theme-color" style="background: #0066ff;"></span>
+        </button>
+        <button class="theme-btn" data-theme="green" title="Tema Verde">
+            <span class="theme-color" style="background: #00ff66;"></span>
+        </button>
+        <button class="theme-btn" data-theme="red" title="Tema Vermelho">
+            <span class="theme-color" style="background: #ff0066;"></span>
+        </button>
+        <button class="theme-btn" data-theme="pink" title="Tema Rosa">
+            <span class="theme-color" style="background: #ff1493;"></span>
+        </button>
+    </div>
+
+    <!-- Botão Toggle Tema Escuro/Claro -->
+    <button class="mode-toggle" id="modeToggle" title="Alternar modo escuro/claro">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <h1>Biano Games</h1>
+            </div>
+
+            <!-- Barra de Pesquisa -->
+            <div class="search-bar">
+                <input type="text" placeholder="Procure um jogo..." id="searchInput">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Menu Superior -->
+            <nav class="header-nav">
+                <a href="#" class="nav-link active">Início</a>
+                <a href="#" class="nav-link">Populares</a>
+                <a href="#" class="nav-link">Recentes</a>
+                <a href="#" class="nav-link">Favoritos</a>
+            </nav>
+
+            <!-- Menu Hambúrguer -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Categorias</h2>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link" data-category="all">
+                <i class="fas fa-th-large"></i>
+                <span>Todos</span>
+            </a>
+            <a href="#" class="sidebar-link" data-category="cars">
+                <i class="fas fa-car"></i>
+                <span>Jogos de Carro</span>
+            </a>
+            <a href="#" class="sidebar-link" data-category="cooking">
+                <i class="fas fa-utensils"></i>
+                <span>Jogos de Cozinhar</span>
+            </a>
+            <a href="#" class="sidebar-link" data-category="fashion">
+                <i class="fas fa-dress"></i>
+                <span>Jogos de Moda</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <p>© 2026 Biano Games</p>
+        </div>
+    </aside>
+
+    <!-- Overlay para Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Banner Principal -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Bem-vindo ao <span>Biano Games</span></h2>
+                <p class="hero-subtitle">Descubra uma experiência de jogos futurista e premium</p>
+                <button class="hero-btn">Explorar Jogos</button>
+            </div>
+            <div class="hero-bg">
+                <div class="neon-circle circle-1"></div>
+                <div class="neon-circle circle-2"></div>
+                <div class="neon-circle circle-3"></div>
+            </div>
+        </section>
+
+        <!-- Botão Poki -->
+        <section class="poki-section">
+            <a href="https://poki.com" target="_blank" rel="noopener noreferrer" class="poki-btn">
+                <i class="fas fa-external-link-alt"></i>
+                <span>Jogar mais jogos no Poki</span>
+            </a>
+        </section>
+
+        <!-- Jogos Populares -->
+        <section class="games-section">
+            <div class="section-header">
+                <h2>🔥 Jogos Populares</h2>
+                <a href="#" class="view-all">Ver Todos</a>
+            </div>
+            <div class="games-grid" id="popularGames">
+                <!-- Preenchido com JavaScript -->
+            </div>
+        </section>
+
+        <!-- Jogos Recentes -->
+        <section class="games-section">
+            <div class="section-header">
+                <h2>⏰ Jogos Recentes</h2>
+                <a href="#" class="view-all">Ver Todos</a>
+            </div>
+            <div class="games-grid" id="recentGames">
+                <!-- Preenchido com JavaScript -->
+            </div>
+        </section>
+
+        <!-- Jogos Recomendados -->
+        <section class="games-section">
+            <div class="section-header">
+                <h2>⭐ Recomendados para Você</h2>
+                <a href="#" class="view-all">Ver Todos</a>
+            </div>
+            <div class="games-grid" id="recommendedGames">
+                <!-- Preenchido com JavaScript -->
+            </div>
+        </section>
+
+        <!-- Favoritos -->
+        <section class="games-section" id="favoritesSection" style="display: none;">
+            <div class="section-header">
+                <h2>❤️ Seus Favoritos</h2>
+            </div>
+            <div class="games-grid" id="favoriteGames">
+                <!-- Preenchido com JavaScript -->
+            </div>
+        </section>
+
+        <!-- Seção de Categorias -->
+        <section class="categories-section">
+            <h2>Explore por Categoria</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="cars">
+                    <div class="category-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Jogos de Carro</h3>
+                    <p>Aceleração e adrenalina</p>
+                </div>
+                <div class="category-card" data-category="cooking">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Jogos de Cozinhar</h3>
+                    <p>Culinárias deliciosas</p>
+                </div>
+                <div class="category-card" data-category="fashion">
+                    <div class="category-icon">
+                        <i class="fas fa-dress"></i>
+                    </div>
+                    <h3>Jogos de Moda</h3>
+                    <p>Estilo e criatividade</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="scroll-to-top" id="scrollToTop" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Notificação -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Ação realizada com sucesso!</span>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Biano Games</h3>
+                <p>O melhor portal de jogos online com design futurista e experiência premium.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Populares</a></li>
+                    <li><a href="#">Recentes</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Biano Games. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Jogo -->
+    <div class="modal" id="gameModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <img id="modalGameImage" src="" alt="Jogo" class="modal-image">
+            </div>
+            <div class="modal-body">
+                <h2 id="modalGameTitle"></h2>
+                <p id="modalGameDescription"></p>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Categoria:</span>
+                        <span id="modalGameCategory" class="stat-value"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Avaliação:</span>
+                        <span id="modalGameRating" class="stat-value"></span>
+                    </div>
+                </div>
+                <button class="play-btn" id="playBtn">
+                    <i class="fas fa-play"></i>
+                    <span>Jogar Agora</span>
+                </button>
+                <button class="favorite-btn" id="favBtn">
+                    <i class="fas fa-heart"></i>
+                    <span>Adicionar aos Favoritos</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
