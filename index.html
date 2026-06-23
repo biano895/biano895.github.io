@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biano - Portfólio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
     <style>
+        :root {
+            --color-primary: #0066ff;
+            --color-secondary: #00ffff;
+            --color-accent: #ff1493;
+            --bg-dark: #0a0e27;
+            --bg-darker: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b5c0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,72 +28,57 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0e27 !important;
-            color: #ffffff;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            top: 0;
-            left: 0;
-            z-index: -2;
-        }
-
-        .background-elements {
+        .bg-container {
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
         }
 
-        .circle {
+        .bg-circle {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.4;
+            animation: float-animation 8s ease-in-out infinite;
         }
 
-        .circle-1 {
+        .bg-circle-1 {
             width: 400px;
             height: 400px;
-            background: #0066ff;
+            background: var(--color-primary);
             top: -200px;
             right: -200px;
-            animation: float 8s ease-in-out infinite;
+            animation-delay: 0s;
         }
 
-        .circle-2 {
+        .bg-circle-2 {
             width: 300px;
             height: 300px;
-            background: #00ffff;
+            background: var(--color-secondary);
             bottom: -150px;
             left: -150px;
-            animation: float 10s ease-in-out infinite 1s;
+            animation-delay: 1s;
         }
 
-        .circle-3 {
+        .bg-circle-3 {
             width: 350px;
             height: 350px;
-            background: #ff1493;
+            background: var(--color-accent);
             top: 50%;
             right: 5%;
-            animation: float 12s ease-in-out infinite 2s;
+            animation-delay: 2s;
         }
 
-        @keyframes float {
+        @keyframes float-animation {
             0%, 100% {
                 transform: translateY(0px);
             }
@@ -94,17 +87,24 @@
             }
         }
 
-        .container {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 800px;
-            width: 100%;
-            animation: fadeIn 1s ease;
+        .main-container {
             position: relative;
             z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
-        @keyframes fadeIn {
+        .content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            animation: fade-in 1s ease;
+        }
+
+        @keyframes fade-in {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -115,46 +115,29 @@
             }
         }
 
-        .logo {
-            font-size: 100px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 30px #00ffff);
-            animation: floatLogo 3s ease-in-out infinite;
+        .logo-section {
+            margin-bottom: 60px;
         }
 
-        @keyframes floatLogo {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-30px);
-            }
-        }
-
-        h1 {
-            font-size: 64px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #0066ff 0%, #00ffff 50%, #ff1493 100%);
+        .main-title {
+            font-size: clamp(48px, 10vw, 72px);
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 2px;
-            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
         }
 
-        .subtitle {
-            font-size: 24px;
-            color: #b0b5c0;
-            margin-bottom: 60px;
+        .main-subtitle {
+            font-size: clamp(18px, 4vw, 24px);
+            color: var(--text-secondary);
             font-weight: 300;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+        .projects-section {
             margin-bottom: 60px;
         }
 
@@ -162,184 +145,201 @@
             background: linear-gradient(135deg, rgba(36, 45, 74, 0.8) 0%, rgba(36, 45, 74, 0.6) 100%);
             border: 2px solid rgba(0, 255, 255, 0.3);
             border-radius: 20px;
-            padding: 40px 30px;
-            transition: all 0.3s ease;
+            padding: 50px 40px;
             backdrop-filter: blur(10px);
-            cursor: pointer;
+            transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0, 102, 255, 0.1);
         }
 
         .project-card:hover {
             transform: translateY(-15px);
-            border-color: #00ffff;
+            border-color: var(--color-secondary);
             box-shadow: 0 0 40px rgba(0, 255, 255, 0.6), inset 0 0 20px rgba(0, 255, 255, 0.1);
             background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 255, 255, 0.1) 100%);
         }
 
         .project-icon {
-            font-size: 60px;
+            font-size: 70px;
+            color: var(--color-primary);
             margin-bottom: 20px;
-            color: #0066ff;
-            filter: drop-shadow(0 0 15px #00ffff);
+            filter: drop-shadow(0 0 15px var(--color-secondary));
             transition: all 0.3s ease;
         }
 
         .project-card:hover .project-icon {
-            color: #00ffff;
+            color: var(--color-secondary);
             transform: scale(1.1);
         }
 
         .project-title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: var(--text-primary);
             letter-spacing: 1px;
         }
 
-        .project-description {
+        .project-text {
             font-size: 16px;
-            color: #b0b5c0;
+            color: var(--text-secondary);
             margin-bottom: 25px;
             line-height: 1.8;
         }
 
-        .project-link {
+        .btn-project {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #0066ff 0%, #0088ff 100%);
-            color: #ffffff;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0088ff 100%);
+            color: var(--text-primary);
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 16px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+            border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
         }
 
-        .project-link:hover {
+        .btn-project:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 40px rgba(0, 102, 255, 1);
             background: linear-gradient(135deg, #0088ff 0%, #00ccff 100%);
         }
 
-        .project-link:active {
+        .btn-project:active {
             transform: translateY(0);
         }
 
-        .social-links {
+        .social-section {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 60px;
+            gap: 30px;
             flex-wrap: wrap;
         }
 
-        .social-link {
+        .social-btn {
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
-            border: 2px solid #00ffff;
+            border: 2px solid var(--color-secondary);
             border-radius: 50%;
-            color: #00ffff;
+            color: var(--color-secondary);
             font-size: 28px;
-            transition: all 0.3s ease;
             text-decoration: none;
+            transition: all 0.3s ease;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
         }
 
-        .social-link:hover {
-            background: linear-gradient(135deg, #0066ff 0%, #00ffff 100%);
-            border-color: #0066ff;
+        .social-btn:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border-color: var(--color-primary);
             transform: translateY(-8px);
             box-shadow: 0 0 30px rgba(0, 102, 255, 0.8);
-            color: #ffffff;
+            color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 48px;
+            .main-title {
+                letter-spacing: 2px;
             }
 
-            .subtitle {
-                font-size: 18px;
+            .main-subtitle {
                 margin-bottom: 40px;
             }
 
-            .projects {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            .project-card {
+                padding: 35px 25px;
             }
 
-            .social-links {
-                gap: 15px;
+            .project-icon {
+                font-size: 50px;
             }
 
-            .logo {
-                font-size: 70px;
-                margin-bottom: 20px;
+            .project-title {
+                font-size: 24px;
+            }
+
+            .social-section {
+                gap: 20px;
             }
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 36px;
+            .main-title {
+                letter-spacing: 1px;
             }
 
-            .logo {
-                font-size: 60px;
+            .project-card {
+                padding: 25px 20px;
             }
 
-            .project-link {
-                padding: 12px 24px;
+            .project-icon {
+                font-size: 40px;
+            }
+
+            .project-title {
+                font-size: 20px;
+            }
+
+            .btn-project {
+                padding: 12px 30px;
                 font-size: 14px;
+            }
+
+            .social-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
         }
     </style>
-
-    <div class="background-elements">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
     </div>
 
-    <div class="container">
-        <div class="logo">🎮</div>
-        <h1>BIANO</h1>
-        <p class="subtitle">Bem-vindo ao meu portfólio de projetos</p>
-
-        <div class="projects">
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <h2 class="project-title">Biano Games</h2>
-                <p class="project-description">Portal de jogos moderno com design futurista, sistema de temas dinâmicos e interface premium com glassmorphism.</p>
-                <a href="./games/" class="project-link">
-                    <span>Acessar Jogos</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+    <main class="main-container">
+        <div class="content">
+            <div class="logo-section">
+                <h1 class="main-title">BIANO</h1>
+                <p class="main-subtitle">Bem-vindo ao meu portfólio de projetos</p>
             </div>
-        </div>
 
-        <div class="social-links">
-            <a href="https://github.com/biano895" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:francisco.f.filho22@aluno.senai.br" class="social-link" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
+            <section class="projects-section">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h2 class="project-title">Biano Games</h2>
+                    <p class="project-text">Portal de jogos moderno com design futurista, sistema de temas dinâmicos e interface premium com glassmorphism.</p>
+                    <a href="games/index.html" class="btn-project">
+                        <span>Acessar Jogos</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="social-section">
+                <a href="https://github.com/biano895" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:francisco.f.filho22@aluno.senai.br" class="social-btn" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </section>
         </div>
-    </div>
+    </main>
 </body>
 </html>
