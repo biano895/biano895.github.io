@@ -1,0 +1,1 @@
+// JavaScript movido para dentro do HTML para evitar 404
